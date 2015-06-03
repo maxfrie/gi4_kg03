@@ -20,7 +20,7 @@ fib:
 	CALL fib 	; fib(n-1) aufrufen
 	ADD esp, 4	; Parameter vom Stack nehmen
 
-	PUSH eax	; erstes Teilergebnis auf Stack legen
+	MOV edx, eax	; erstes Teilergebnis sichern
 	
 	MOV ecx, dword [ebp+8]
 	SUB ecx, 2
@@ -28,7 +28,6 @@ fib:
 	CALL fib	; fib(n-2) aufrufen
 	ADD esp, 4	; Parameter vom Stack nehmen
 
-	POP edx		; Zwischengespeichertes Ergebnis laden
 	ADD eax, edx	; Summiere: fib(n-1) + fib(n-2)
 	JMP return	
 l1:
